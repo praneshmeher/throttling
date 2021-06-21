@@ -1,1 +1,1 @@
-# throttling
+# Published at https://praneshmeher.github.io/throttling/
