@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Throttling</title>
+        <style>
+            html{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <button onclick="throttled()">Click Me</button>
+
+        <script>
+
+            function apicall(){
+                console.log('apicall')
+            }
+
+            function throttle(func, delay){
+                let flag = true
+                return function(){
+                    let context = this
+                    let args = arguments
+                    if(flag){
+                        func.apply(context, args)
+                        flag = false
+                        setTimeout(()=>{
+                            flag = true
+                        }, delay)
+                    }
+                }
+            }
+
+            const throttled = throttle(apicall, 2000)
+
+        </script>
+
+    </body>
+</html>
